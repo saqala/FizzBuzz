@@ -1,16 +1,22 @@
 package com.leboncoin.fizzbuzz.controller;
 
 import com.leboncoin.fizzbuzz.application.FizzBuzzApplication;
+import com.leboncoin.fizzbuzz.dto.FizzBuzzDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping(value = "/fizzbuzz")
 public class FizzBuzzController {
 
+    Logger LOGGER = Logger.getLogger(FizzBuzzController.class.getName());
 
     final FizzBuzzApplication fizzBuzzApplication;
 
@@ -18,9 +24,14 @@ public class FizzBuzzController {
         this.fizzBuzzApplication = fizzBuzzApplication;
     }
 
-    @GetMapping("/count-request")
-    public ResponseEntity<String> getNumberOfRequests(){
-        return ResponseEntity.status(HttpStatus.OK).body(fizzBuzzApplication.getFizzBuzz());
+    @PostMapping("")
+    public ResponseEntity transformToFizzBuzz(@RequestBody FizzBuzzDto fizzBuzzDto) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(fizzBuzzApplication.getFizzBuzz(FizzBuzzDto.toDomain(fizzBuzzDto)));
+        } catch (Exception exception) {
+            LOGGER.log(Level.WARNING, exception.getMessage(), exception);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
+        }
     }
 
 }
