@@ -4,11 +4,9 @@ import com.leboncoin.fizzbuzz.application.FizzBuzzApplication;
 import com.leboncoin.fizzbuzz.dto.FizzBuzzDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,11 +25,17 @@ public class FizzBuzzController {
     @PostMapping("")
     public ResponseEntity transformToFizzBuzz(@RequestBody FizzBuzzDto fizzBuzzDto) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(fizzBuzzApplication.getFizzBuzz(FizzBuzzDto.toDomain(fizzBuzzDto)));
+            ResponseEntity<List<String>> body = ResponseEntity.status(HttpStatus.OK).body(fizzBuzzApplication.getFizzBuzz(FizzBuzzDto.toDomain(fizzBuzzDto)));
+            return body;
         } catch (Exception exception) {
             LOGGER.log(Level.WARNING, exception.getMessage(), exception);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
         }
+    }
+
+    @GetMapping("/frequent")
+    public ResponseEntity transformToFizzBuzz() {
+        return ResponseEntity.status(HttpStatus.OK).body(fizzBuzzApplication.findFrequentFizzBuzzes());
     }
 
 }

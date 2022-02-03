@@ -8,7 +8,7 @@ import java.util.List;
 
 public class FizzBuzzApplication {
 
-    private FizzBuzzRepository fizzBuzzPort;
+    private final FizzBuzzRepository fizzBuzzPort;
 
     public FizzBuzzApplication(FizzBuzzRepository fizzBuzzPort) {
         this.fizzBuzzPort = fizzBuzzPort;
@@ -16,7 +16,12 @@ public class FizzBuzzApplication {
 
     public List<String> getFizzBuzz(FizzBuzz fizzBuzz) {
         if (fizzBuzz == null) throw FizzBuzzException.create(FizzBuzzException.NULL_OBJECT);
+        fizzBuzzPort.updateCounter(fizzBuzz);
         return fizzBuzz.generateTheFizzBuzz();
+    }
+
+    public List<FizzBuzz> findFrequentFizzBuzzes() {
+        return fizzBuzzPort.findFrequentFizzBuzzes();
     }
 
 }

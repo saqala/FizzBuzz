@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  fizzbuzz:
+    container_name: fizzbuzz
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: leboncoin/fizzbuzz:1.0
+    ports:
+      - "8080:8080"

@@ -20,7 +20,7 @@ public class FizzBuzzDto {
         if (dto == null) {
             return null;
         }
-        return new FizzBuzz(dto.param1, dto.param2, dto.limit, dto.str1, dto.str2);
+        return new FizzBuzz(dto.param1, dto.param2, dto.limit, dto.str1, dto.str2, 0);
     }
 
 }

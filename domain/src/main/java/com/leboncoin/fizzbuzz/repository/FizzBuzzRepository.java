@@ -1,7 +1,12 @@
 package com.leboncoin.fizzbuzz.repository;
 
+import com.leboncoin.fizzbuzz.domain.FizzBuzz;
+
+import java.util.List;
+
 public interface FizzBuzzRepository {
 
-    String findParams();
+    List<FizzBuzz> findFrequentFizzBuzzes();
 
+    void updateCounter(FizzBuzz fizzBuzz);
 }

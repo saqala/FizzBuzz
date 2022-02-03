@@ -14,14 +14,40 @@ public class FizzBuzz {
     private final Integer limit;
     private final String str1;
     private final String str2;
+    private final Integer counter;
 
-    public FizzBuzz(Integer param1, Integer param2, Integer limit, String str1, String str2) {
+    public FizzBuzz(Integer param1, Integer param2, Integer limit, String str1, String str2, Integer counter) {
         validate(param1, param2, limit, str1, str2);
         this.param1 = param1;
         this.param2 = param2;
         this.limit = limit;
         this.str1 = str1;
         this.str2 = str2;
+        this.counter = counter;
+    }
+
+    public Integer getParam1() {
+        return param1;
+    }
+
+    public Integer getParam2() {
+        return param2;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public String getStr1() {
+        return str1;
+    }
+
+    public String getStr2() {
+        return str2;
+    }
+
+    public Integer getCounter() {
+        return counter;
     }
 
     public List<String> generateTheFizzBuzz() {
@@ -51,4 +77,5 @@ public class FizzBuzz {
             throw FizzBuzzException.create(String.format(FizzBuzzException.PARAM_NULL_OR_LESS_THAN_ONE, param));
         });
     }
+
 }
