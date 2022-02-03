@@ -1,8 +1,7 @@
 # FizzBuzz
 
 ### to run the project :
-sudo docker-compose build --build-arg profile="dev"
-sudo docker-compose up
+sudo docker-compose build --build-arg profile="dev" && sudo docker-compose up
 
 ### test Apis:
 
