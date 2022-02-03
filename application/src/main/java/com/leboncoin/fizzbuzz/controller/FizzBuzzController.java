@@ -25,8 +25,7 @@ public class FizzBuzzController {
     @PostMapping("")
     public ResponseEntity transformToFizzBuzz(@RequestBody FizzBuzzDto fizzBuzzDto) {
         try {
-            ResponseEntity<List<String>> body = ResponseEntity.status(HttpStatus.OK).body(fizzBuzzApplication.getFizzBuzz(FizzBuzzDto.toDomain(fizzBuzzDto)));
-            return body;
+            return ResponseEntity.status(HttpStatus.OK).body(fizzBuzzApplication.getFizzBuzz(FizzBuzzDto.toDomain(fizzBuzzDto)));
         } catch (Exception exception) {
             LOGGER.log(Level.WARNING, exception.getMessage(), exception);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());

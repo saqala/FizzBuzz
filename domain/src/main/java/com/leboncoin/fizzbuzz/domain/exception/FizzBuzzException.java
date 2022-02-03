@@ -2,7 +2,8 @@ package com.leboncoin.fizzbuzz.domain.exception;
 
 public class FizzBuzzException extends RuntimeException {
 
-    public static final String PARAM_NULL_OR_LESS_THAN_ONE = "the param %d is null or less than one";
+    public static final String PARAM_NULL = "param is null";
+    public static final String PARAM_LESS_THAN_ONE = "the param %d is null or less than one";
     public static final String STRING_NULL_OR_EMPTY = "the injected string is null or empty";
     public static final String NULL_OBJECT = "fizzbuzz must not be null";
 

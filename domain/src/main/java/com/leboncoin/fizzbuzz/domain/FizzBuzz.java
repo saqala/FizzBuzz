@@ -67,14 +67,16 @@ public class FizzBuzz {
     }
 
     private void isStringNullOrEmpty(String str1, String str2) {
-        Stream.of(str1, str2).filter(str -> str == null || str.isEmpty()).findAny().ifPresent(str -> {
+        if (str1 == null || str2 == null || str1.isEmpty() || str2.isEmpty())
             throw FizzBuzzException.create(FizzBuzzException.STRING_NULL_OR_EMPTY);
-        });
+
     }
 
     private void isParamNullOrLessThanOne(Integer param1, Integer param2, Integer limit) {
-        Stream.of(param1, param2, limit).filter(param -> param == null || param < LIMIT_MIN).findAny().ifPresent(param -> {
-            throw FizzBuzzException.create(String.format(FizzBuzzException.PARAM_NULL_OR_LESS_THAN_ONE, param));
+        if (param1 == null || param2 == null || limit == null)
+            throw FizzBuzzException.create(FizzBuzzException.PARAM_NULL);
+        Stream.of(param1, param2, limit).filter(param -> param < LIMIT_MIN).findAny().ifPresent(param -> {
+            throw FizzBuzzException.create(String.format(FizzBuzzException.PARAM_LESS_THAN_ONE, param));
         });
     }
 

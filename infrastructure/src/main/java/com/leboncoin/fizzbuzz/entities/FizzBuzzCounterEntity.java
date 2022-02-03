@@ -23,4 +23,6 @@ public class FizzBuzzCounterEntity {
     private String str1;
     private String str2;
     private Integer counter;
+    @Version
+    private Long version;
 }

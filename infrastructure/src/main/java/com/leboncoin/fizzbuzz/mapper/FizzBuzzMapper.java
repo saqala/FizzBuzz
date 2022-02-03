@@ -22,6 +22,6 @@ public interface FizzBuzzMapper {
 
     static FizzBuzzCounterEntity toEntity(FizzBuzz domain) {
         if (domain == null) return null;
-        return new FizzBuzzCounterEntity(null, domain.getParam1(), domain.getParam2(), domain.getLimit(), domain.getStr1(), domain.getStr2(), domain.getCounter());
+        return new FizzBuzzCounterEntity(null, domain.getParam1(), domain.getParam2(), domain.getLimit(), domain.getStr1(), domain.getStr2(), domain.getCounter(), null);
     }
 }

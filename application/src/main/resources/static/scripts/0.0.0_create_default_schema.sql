@@ -6,5 +6,6 @@ create table if not exists fizz_buzz_counter(
     str1 varchar(255) not null,
     str2 varchar(255) not null,
     counter int not null,
+    version long not null,
     constraint unique_params unique (param1,param2, limit_, str1, str2, counter)
     )
